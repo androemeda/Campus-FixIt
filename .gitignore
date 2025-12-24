@@ -1,0 +1,75 @@
+**/.env
+**/.env.local
+**/.env.*.local
+**/.env.development
+**/.env.production
+**/.env.test
+.env
+.env.local
+.env.*.local
+.env.development
+.env.production
+.env.test
+
+# Allow .env.example files (these should NOT contain real secrets)
+!**/.env.example
+!.env.example
+
+# API keys and secrets
+**/*.pem
+**/*.key
+**/*.p8
+**/*.p12
+**/*.jks
+**/*.mobileprovision
+
+**/node_modules/
+node_modules/
+
+# ============================================
+# FRONTEND (React Native/Expo)
+# ============================================
+frontend/.expo/
+frontend/dist/
+frontend/web-build/
+frontend/expo-env.d.ts
+frontend/.kotlin/
+frontend/*.orig.*
+frontend/.metro-health-check*
+frontend/*.tsbuildinfo
+frontend/app-example
+frontend/ios/
+frontend/android/
+
+# ============================================
+# BACKEND
+# ============================================
+backend/dist/
+backend/build/
+backend/logs/
+backend/*.log
+
+# ============================================
+# GENERAL
+# ============================================
+# Debug logs
+npm-debug.*
+yarn-debug.*
+yarn-error.*
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Build outputs
+dist/
+build/
+*.tsbuildinfo
