@@ -21,6 +21,7 @@ Demo video - https://drive.google.com/drive/folders/1xIA-fY39RmcIGFoFRnOZi2u4RDa
 - View all reported issues with filters (category, status)
 - Track issue status (Open, In Progress, Resolved)
 - View admin remarks on issues
+- Email notification on status change (bonus)
 
 ### Admin Features
 - View all campus issues with statistics dashboard
