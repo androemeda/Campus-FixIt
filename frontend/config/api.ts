@@ -17,6 +17,12 @@ api.interceptors.request.use(
       config.headers.Authorization = `Bearer ${token}`;
     }
     
+    // Explicitly set Content-Type for FormData on mobile
+    // Axios doesn't automatically handle this on React Native
+    if (config.data instanceof FormData) {
+      config.headers['Content-Type'] = 'multipart/form-data';
+    }
+    
     return config;
   },
   (error) => {

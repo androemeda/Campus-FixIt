@@ -6,7 +6,7 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 const sendEmail = async ({ to, subject, html }) => {
   try {
     const { data, error } = await resend.emails.send({
-      from: 'Canteeno <verify@canteeno.in>', // or your custom domain
+      from: 'CampusFixIt <admin@canteeno.in>', // or your custom domain
       to: [to],
       subject,
       html,
