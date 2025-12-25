@@ -32,6 +32,8 @@ export default function ManageIssueScreen() {
   const { fetchIssueById, updateIssue, resolveIssue } = useIssues();
   const router = useRouter();
 
+  const API_BASE_URL = process.env.EXPO_PUBLIC_API_BASE_URL || 'http://localhost:3000';
+
   useEffect(() => {
     loadIssue();
   }, [id]);
@@ -40,7 +42,7 @@ export default function ManageIssueScreen() {
     try {
       setLoading(true);
       const token = await AsyncStorage.getItem('token');
-      const response = await fetch(`http://localhost:3000/api/admin/issues`, {
+      const response = await fetch(`${API_BASE_URL}/api/admin/issues`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
