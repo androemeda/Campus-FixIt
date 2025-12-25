@@ -66,27 +66,32 @@ export default function ManageIssueScreen() {
   };
 
   const handleUpdate = async () => {
-    if (!selectedStatus && !remark) {
-      Alert.alert('Error', 'Please select a status or add a remark');
-      return;
-    }
+  if (!selectedStatus && !remark) {
+    Alert.alert('Error', 'Please select a status or add a remark');
+    return;
+  }
 
-    try {
-      setUpdating(true);
-      await updateIssue(
-        id as string,
-        selectedStatus !== issue?.status ? selectedStatus : undefined,
-        remark || undefined
-      );
-      Alert.alert('Success', 'Issue updated successfully', [
-        { text: 'OK', onPress: () => router.replace('/(admin)/dashboard' as any) },
-      ]);
-    } catch (error: any) {
-      Alert.alert('Error', error.message || 'Failed to update issue');
-    } finally {
-      setUpdating(false);
-    }
-  };
+  try {
+    setUpdating(true);
+
+    await updateIssue(
+      id as string,
+      selectedStatus !== issue?.status ? selectedStatus : undefined,
+      remark || undefined
+    );
+
+    setRemark('');
+
+    // ✅ Navigate back safely
+    router.replace('/(admin)/dashboard');
+
+  } catch (error: any) {
+    Alert.alert('Error', error.message || 'Failed to update issue');
+  } finally {
+    setUpdating(false);
+  }
+};
+
 
   const handleResolve = async () => {
     Alert.alert(
@@ -102,7 +107,7 @@ export default function ManageIssueScreen() {
               setUpdating(true);
               await resolveIssue(id as string);
               Alert.alert('Success', 'Issue marked as resolved', [
-                { text: 'OK', onPress: () => router.back() },
+                { text: 'OK', onPress: () => router.replace('/(admin)/dashboard' as any) },
               ]);
             } catch (error: any) {
               Alert.alert('Error', error.message || 'Failed to resolve issue');
